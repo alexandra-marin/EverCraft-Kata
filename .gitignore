@@ -36,3 +36,6 @@ gradle.properties
 # Others
 *~
 .DS_Store
+
+# JS
+node_modules/

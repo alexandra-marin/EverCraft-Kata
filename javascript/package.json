@@ -1,0 +1,24 @@
+{
+	"name": "evercraft",
+	"version": "1.0.0",
+	"description": "JS Kata",
+	"author": "Alexandra Marin",
+	"main": "App.js",
+	"scripts": {
+		"test": "karma start"
+	},
+	"devDependencies": {
+		"babel-loader": "^5.0.0",
+		"jasmine": "^2.2.1",
+		"jasmine-core": "^2.2.0",
+		"karma": "^0.13.2",
+		"karma-cli": "^1.0.1",
+		"karma-jasmine": "^0.3.5",
+		"karma-chrome-launcher": "^2.2.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/alexandra-marin/EverCraft-Kata.git"
+	},
+	"dependencies": {}
+}
