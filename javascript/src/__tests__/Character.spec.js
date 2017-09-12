@@ -1,5 +1,5 @@
 import { should } from "should";
-import { Character, Alignments } from "./src/Character";
+import { Character, Alignments } from "../Character";
 
 describe("Character should", function() {
 	let character;
