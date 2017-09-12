@@ -20,12 +20,12 @@
     "should": "^13.0.1",
     "webpack": "^1.12.11"
   },
-  "main": "dist/calculator.js",
+  "main": "dist/app.js",
   "name": "evercraft",
   "scripts": {
     "build": "npm run clean && npm run build:dev && npm run build:prd",
-    "build:dev": "webpack src/Calculator.js dist/calculator.js --config tools/webpack.config.dev.js",
-    "build:prd": "webpack src/Calculator.js dist/calculator.min.js --config tools/webpack.config.prd.js",
+    "build:dev": "webpack src/App.js dist/app.js --config tools/webpack.config.dev.js",
+    "build:prd": "webpack src/App.js dist/app.min.js --config tools/webpack.config.prd.js",
     "clean": "rimraf dist build",
     "lint": "eslint src",
     "prepublish": "npm run build",
