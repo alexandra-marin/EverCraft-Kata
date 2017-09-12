@@ -1,44 +1,44 @@
 import { should } from "should";
 import { Character, Alignments } from "../Character";
 
-describe("Character should", function() {
+describe("Character should", () => {
 	let character;
 
 	beforeEach(() => {
 		character = new Character();
 	});
 
-	it("have a name", function() {
+	it("have a name", () => {
 		character.should.have.property("name");
 	});
 
-	it("have an alignment", function() {
+	it("have an alignment", () => {
 		character.should.have.property("alignment");
 	});
 
-	it("not have alignment different than Good, Bad, Neutral", function() {
+	it("not have alignment different than Good, Bad, Neutral", () => {
 		character.alignment = Alignments.good;
 		character.alignment = "Unknown";
 		character.alignment.should.equal(Alignments.good);
 	});
 
-	it("have 5 HP", function() {
+	it("have 5 HP", () => {
 		character.should.have.property("hitPoints");
 		character.hitPoints.should.be.exactly(5);
 	});
 
-	it("have 10 armor", function() {
+	it("have 10 armor", () => {
 		character.should.have.property("armor");
 		character.armor.should.be.exactly(10);
 	});
 
-	it("attack by rolling a dice 20-sided dice", function() {
+	it("attack by rolling a dice 20-sided dice", () => {
 		var attack = character.rollDice();
 		console.log("Dice roll: " + character.attackForce);
 		character.attackForce.should.be.aboveOrEqual(1).and.belowOrEqual(20);
 	});
 
-	it("inflict damage if roll is equal or greater than enemy armor", function() {
+	it("inflict damage if roll is equal or greater than enemy armor", () => {
         const enemy = new Character();
         enemy.armor = 10;
 
@@ -48,7 +48,7 @@ describe("Character should", function() {
         willDamage.should.be.true();
 	});
 
-	it("not inflict damage if roll is less than enemy armor", function() {
+	it("not inflict damage if roll is less than enemy armor", () => {
 		const enemy = new Character();
         enemy.armor = 10;
 
@@ -58,7 +58,7 @@ describe("Character should", function() {
         willDamage.should.be.false();
     });
     
-    it("take 1 damage when attack is greater or equal to armor", function() {
+    it("take 1 damage when attack is greater or equal to armor", () => {
 		const enemy = new Character();
         enemy.attackForce = 15;
 
@@ -69,7 +69,7 @@ describe("Character should", function() {
         character.hitPoints.should.be.exactly(4);
     });
     
-    it("take no damage when attack is less than armor", function() {
+    it("take no damage when attack is less than armor", () => {
 		const enemy = new Character();
         enemy.attackForce = 15;
 
@@ -80,7 +80,7 @@ describe("Character should", function() {
         character.hitPoints.should.be.exactly(5);
     });
     
-    it("take double damage when attack 20", function() {
+    it("take double damage when attack 20", () => {
 		const enemy = new Character();
         enemy.attackForce = 20;
 
@@ -91,7 +91,7 @@ describe("Character should", function() {
         character.hitPoints.should.be.exactly(3);
     });
     
-    it("die if hit points is 0 or less", function() {
+    it("die if hit points is 0 or less", () => {
         character.hitPoints = 0;
         var willDie = character.willDie();
 
