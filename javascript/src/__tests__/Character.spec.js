@@ -1,5 +1,5 @@
 import { should } from "should";
-import { Character, Alignments } from "../Character";
+import { Character } from "../Character";
 
 describe("Character should", () => {
 	let character;
@@ -17,9 +17,15 @@ describe("Character should", () => {
 	});
 
 	it("not have alignment different than Good, Bad, Neutral", () => {
-		character.alignment = Alignments.good;
+		character.alignment = "Good";
 		character.alignment = "Unknown";
-		character.alignment.should.equal(Alignments.good);
+		character.alignment.should.equal("Good");
+    });
+    
+    it("change alignment to Good, Bad, Neutral", () => {
+		character.hasAlignment = "Good";
+		character.alignment = "Neutral";
+		character.hasAlignment.should.equal("Neutral");
 	});
 
 	it("have 5 HP", () => {
@@ -38,63 +44,84 @@ describe("Character should", () => {
 		character.attackForce.should.be.aboveOrEqual(1).and.belowOrEqual(20);
 	});
 
-	it("inflict damage if roll is equal or greater than enemy armor", () => {
-        const enemy = new Character();
-        enemy.armor = 10;
+	it("inflict damage if roll is greater than enemy armor", () => {
+		const enemy = new Character();
+		enemy.armor = 10;
 
-        character.attackForce = 15;
-        const willDamage = character.canDamage(enemy.armor);
+		character.attackForce = 15;
+		const willDamage = character.canDamage(enemy.armor);
 
-        willDamage.should.be.true();
+		willDamage.should.be.true();
+	});
+
+	it("inflict damage if roll is equal to enemy armor", () => {
+		const enemy = new Character();
+		enemy.armor = 15;
+
+		character.attackForce = 15;
+		const willDamage = character.canDamage(enemy.armor);
+
+		willDamage.should.be.true();
 	});
 
 	it("not inflict damage if roll is less than enemy armor", () => {
 		const enemy = new Character();
-        enemy.armor = 10;
+		enemy.armor = 10;
 
-        character.attackForce = 5;
-        const willDamage = character.canDamage(enemy.armor);
+		character.attackForce = 5;
+		const willDamage = character.canDamage(enemy.armor);
 
-        willDamage.should.be.false();
-    });
-    
-    it("take 1 damage when attack is greater or equal to armor", () => {
+		willDamage.should.be.false();
+	});
+
+	it("take 1 damage when attack is greater than armor", () => {
 		const enemy = new Character();
-        enemy.attackForce = 15;
+		enemy.attackForce = 15;
 
-        character.armor = 2;
-        character.hitPoints = 5;
-        character.takeDamage(enemy.attackForce);
+		character.armor = 2;
+		character.hitPoints = 5;
+		character.takeDamage(enemy.attackForce);
 
-        character.hitPoints.should.be.exactly(4);
-    });
-    
-    it("take no damage when attack is less than armor", () => {
+		character.hitPoints.should.be.exactly(4);
+	});
+
+	it("take 1 damage when attack is equal to armor", () => {
 		const enemy = new Character();
-        enemy.attackForce = 15;
+		enemy.attackForce = 2;
 
-        character.armor = 20;
-        character.hitPoints = 5;
-        character.takeDamage(enemy.attackForce);
+		character.armor = 2;
+		character.hitPoints = 5;
+		character.takeDamage(enemy.attackForce);
 
-        character.hitPoints.should.be.exactly(5);
-    });
-    
-    it("take double damage when attack 20", () => {
+		character.hitPoints.should.be.exactly(4);
+	});
+
+	it("take no damage when attack is less than armor", () => {
 		const enemy = new Character();
-        enemy.attackForce = 20;
+		enemy.attackForce = 15;
 
-        character.armor = 20;
-        character.hitPoints = 5;
-        character.takeDamage(enemy.attackForce);
+		character.armor = 20;
+		character.hitPoints = 5;
+		character.takeDamage(enemy.attackForce);
 
-        character.hitPoints.should.be.exactly(3);
-    });
-    
-    it("die if hit points is 0 or less", () => {
-        character.hitPoints = 0;
-        var willDie = character.willDie();
+		character.hitPoints.should.be.exactly(5);
+	});
 
-        willDie.should.be.true();
+	it("take critical hit when enemy attack is 20", () => {
+		const enemy = new Character();
+		enemy.attackForce = 20;
+
+		character.armor = 20;
+		character.hitPoints = 5;
+		character.takeDamage(enemy.attackForce);
+
+		character.hitPoints.should.be.exactly(3);
+	});
+
+	it("die if hit points is 0 or less", () => {
+		character.hitPoints = 0;
+		var willDie = character.willDie();
+
+		willDie.should.be.true();
 	});
 });

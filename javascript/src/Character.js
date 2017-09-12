@@ -1,3 +1,6 @@
+import { DiceSides, NormalDamage } from "./Constants";
+import { Alignments } from "./Alignments";
+
 export class Character {
 	constructor() {
 		this.name = "Wizard";
@@ -12,9 +15,9 @@ export class Character {
 	}
 
 	set alignment(value) {
-		var alignmentExists = Alignments[value];
+		var alignmentExists = Alignments.includes(value);
 
-		if (alignmentExists) {
+        if (alignmentExists) {
 			this.hasAlignment = value;
 		}
 	}
@@ -25,7 +28,7 @@ export class Character {
 	}
 
 	canDamage(armor) {
-		if (armor < this.attackForce) return true;
+		if (armor <= this.attackForce) return true;
 		return false;
 	}
 
@@ -51,15 +54,6 @@ export class Character {
 		return this.hitPoints <= 0;
 	}
 }
-
-export const Alignments = {
-	good: "Good",
-	bad: "Bad",
-	neutral: "Neutral"
-};
-
-const DiceSides = 20;
-const NormalDamage = 1;
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
