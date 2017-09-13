@@ -1,8 +1,8 @@
 const Alignments = ["Good", "Bad", "Neutral"];
 
 export class Alignment {
-	constructor(alignment) {
-		this.alignment = "Good";
+	constructor() {
+        this.alignment = "Good";
 	}
 
 	get = () => this.alignment;

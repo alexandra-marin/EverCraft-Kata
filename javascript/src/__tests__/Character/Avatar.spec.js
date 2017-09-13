@@ -14,6 +14,7 @@ describe("Character should", () => {
 
 	it("have an alignment", () => {
 		character.should.have.property("alignment");
+		character.alignment.get().be.exactly("Good");
 	});
 
 	it("have 5 HP", () => {
