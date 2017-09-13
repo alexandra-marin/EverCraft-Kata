@@ -1,17 +1,27 @@
 const Alignments = ["Good", "Bad", "Neutral"];
 
-export class Alignment {
-	constructor() {
-        this.alignment = "Good";
+var alignment = (function() {
+	alignment = "Good";
+
+	function get() {
+		return alignment;
 	}
 
-	get = () => this.alignment;
-
-	set = value => {
+	function set(value) {
 		var alignmentExists = Alignments.includes(value);
 
 		if (alignmentExists) {
-			this.alignment = value;
+			alignment = value;
 		}
+	}
+
+	return {
+		get: get,
+		set: set
 	};
-}
+});
+
+export default alignment ;
+
+console.log("234ggggsdfsdfsdfsdfsdfdfds");
+// console.log(alignment().get());

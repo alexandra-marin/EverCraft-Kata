@@ -1,6 +1,6 @@
 import { Defenses } from "./Defenses";
 import { Attack } from "./Attack";
-import { Alignment } from "./Alignment";
+import * as Alignment from "./Alignment";
 
 export class Character {
 	constructor() {
@@ -8,7 +8,7 @@ export class Character {
 		this.hitPoints = 5;
 		this.armor = 10;
 		this.attackForce = 0;
-		this.alignment = new Alignment();
+        this.alignment = Alignment.default();
 		this.defense = new Defenses();
 		this.attacks = new Attack();
 	}
