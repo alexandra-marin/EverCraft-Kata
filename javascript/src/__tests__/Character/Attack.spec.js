@@ -1,5 +1,5 @@
 import { should } from "should";
-import { Character } from "../../Character";
+import { Character, canDamage } from "../../Character";
 
 describe("Character should", () => {
 	let character;
@@ -19,7 +19,7 @@ describe("Character should", () => {
 		enemy.armor = 10;
 
 		character.attackForce = 15;
-		const willDamage = character.canDamage(enemy.armor, character.attackForce);
+		const willDamage = canDamage(enemy.armor, character.attackForce);
 
 		willDamage.should.be.true();
 	});
@@ -29,7 +29,7 @@ describe("Character should", () => {
 		enemy.armor = 15;
 
 		character.attackForce = 15;
-		const willDamage = character.canDamage(enemy.armor, character.attackForce);
+		const willDamage = canDamage(enemy.armor, character.attackForce);
 
 		willDamage.should.be.true();
 	});
@@ -39,7 +39,7 @@ describe("Character should", () => {
 		enemy.armor = 10;
 
 		character.attackForce = 5;
-		const willDamage = character.canDamage(enemy.armor, character.attackForce);
+		const willDamage = canDamage(enemy.armor, character.attackForce);
 
 		willDamage.should.be.false();
 	});

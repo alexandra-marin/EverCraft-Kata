@@ -27,22 +27,15 @@ export class Character {
 	}
 
 	defend(attack) {
-		willBeDamaged = canDamage(this.armor, attack);
+		let willBeDamaged = canDamage(this.armor, attack);
 		if (willBeDamaged) {
-			takeDamage(attack);
+			this.takeDamage(attack);
 		}
-	}
-
-	canDamage(armor, attackForce) {
-		if (armor <= attackForce) {
-			return true;
-		}
-		return false;
 	}
 
 	takeDamage(attack) {
-		if (attack === 20) {
-			return this.doubleDamage();
+		if (attack === DiceSides) {
+			return this.criticalHit();
 		}
 
 		if (this.armor <= attack) {
@@ -50,17 +43,21 @@ export class Character {
 		}
 	}
 
-	normalDamage() {
-		this.hitPoints -= NormalDamage;
+	criticalHit() {
+		this.hitPoints -= 2 * NormalDamage;
 	}
 
-	doubleDamage() {
-		this.hitPoints -= 2 * NormalDamage;
+	normalDamage() {
+		this.hitPoints -= NormalDamage;
 	}
 
 	isDead() {
 		return this.hitPoints <= 0;
 	}
+}
+
+export function canDamage(armor, attackForce) {
+	return armor <= attackForce;
 }
 
 function getRandomInt(min, max) {
