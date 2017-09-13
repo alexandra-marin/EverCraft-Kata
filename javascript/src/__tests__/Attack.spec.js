@@ -11,7 +11,8 @@ describe("Attack should", () => {
 	it("roll a dice 20-sided dice", () => {
 		let roll = attack.roll();
 		console.log("Dice roll: " + roll);
-		roll.should.be.aboveOrEqual(1).and.belowOrEqual(20);
+        
+        roll.should.be.aboveOrEqual(1).and.belowOrEqual(20);
 	});
 
 	it("inflict damage if roll is greater than enemy armor", () => {
