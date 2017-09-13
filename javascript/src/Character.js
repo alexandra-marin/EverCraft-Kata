@@ -17,18 +17,26 @@ export class Character {
 	set alignment(value) {
 		var alignmentExists = Alignments.includes(value);
 
-        if (alignmentExists) {
+		if (alignmentExists) {
 			this.hasAlignment = value;
 		}
 	}
 
-	rollDice() {
-		this.attackForce = getRandomInt(1, DiceSides);
-		return this.attackForce;
+	attack() {
+		this.attackForce = rollDice();
 	}
 
-	canDamage(armor) {
-		if (armor <= this.attackForce) return true;
+	defend(attack) {
+		willBeDamaged = canDamage(this.armor, attack);
+		if (willBeDamaged) {
+			takeDamage(attack);
+		}
+	}
+
+	canDamage(armor, attackForce) {
+		if (armor <= attackForce) {
+			return true;
+		}
 		return false;
 	}
 
@@ -50,11 +58,15 @@ export class Character {
 		this.hitPoints -= 2 * NormalDamage;
 	}
 
-	willDie() {
+	isDead() {
 		return this.hitPoints <= 0;
 	}
 }
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function rollDice() {
+	return getRandomInt(1, DiceSides);
 }
