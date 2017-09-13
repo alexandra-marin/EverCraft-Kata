@@ -1,28 +1,16 @@
-import { Alignments } from "./Alignments";
 import { Defenses } from "./Defenses";
 import { Attack } from "./Attack";
+import { Alignment } from "./Alignment";
 
 export class Character {
 	constructor() {
 		this.name = "Wizard";
-		this.hasAlignment = Alignments.good;
 		this.hitPoints = 5;
 		this.armor = 10;
 		this.attackForce = 0;
+		this.alignment = new Alignment();
 		this.defense = new Defenses();
 		this.attacks = new Attack();
-	}
-
-	get alignment() {
-		return this.hasAlignment;
-	}
-
-	set alignment(value) {
-		var alignmentExists = Alignments.includes(value);
-
-		if (alignmentExists) {
-			this.hasAlignment = value;
-		}
 	}
 
 	attack = () => {
