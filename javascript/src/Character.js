@@ -22,9 +22,7 @@ export class Character {
 		}
 	}
 
-	attack() {
-		this.attackForce = rollDice();
-	}
+	attack = () => (this.attackForce = rollDice());
 
 	defend(attack) {
 		let willBeDamaged = canDamage(this.armor, attack);
@@ -51,19 +49,12 @@ export class Character {
 		this.hitPoints -= NormalDamage;
 	}
 
-	isDead() {
-		return this.hitPoints <= 0;
-	}
+	isDead = () => this.hitPoints <= 0;
 }
 
-export function canDamage(armor, attackForce) {
-	return armor <= attackForce;
-}
+export let canDamage = (armor, attackForce) => armor <= attackForce;
 
-function getRandomInt(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+let getRandomInt = (min, max) =>
+	Math.floor(Math.random() * (max - min + 1)) + min;
 
-function rollDice() {
-	return getRandomInt(1, DiceSides);
-}
+let rollDice = () => getRandomInt(1, DiceSides);
