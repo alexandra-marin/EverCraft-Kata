@@ -1,6 +1,6 @@
 const Alignments = ["Good", "Bad", "Neutral"];
 
-var alignment = function() {
+var alignment = () => {
 	alignment = "Good";
 
 	function get() {
@@ -16,9 +16,9 @@ var alignment = function() {
 	}
 
 	return {
-		get: get,
-		set: set
+		get,
+		set
 	};
 };
 
-export default alignment ;
+export default alignment;
