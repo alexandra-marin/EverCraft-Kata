@@ -8,7 +8,7 @@ export class Character {
 		this.hasAlignment = Alignments.good;
 		this.hitPoints = 5;
 		this.armor = 10;
-		this.attackForce = 1;
+		this.attackForce = 0;
 		this.defense = new Defenses();
 		this.attacks = new Attack();
 	}
