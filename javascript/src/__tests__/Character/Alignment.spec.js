@@ -14,7 +14,7 @@ describe("Character should", () => {
 		character.alignment.should.equal("Good");
     });
     
-    it("change alignment to Good, Bad, Neutral", () => {
+    it("change alignment from Good to Neutral", () => {
 		character.hasAlignment = "Good";
 		character.alignment = "Neutral";
 		character.hasAlignment.should.equal("Neutral");
