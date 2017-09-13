@@ -1,5 +1,6 @@
-import { DiceSides, NormalDamage } from "./Constants";
 import { Alignments } from "./Alignments";
+import { Defenses } from "./Defenses";
+import { Attack } from "./Attack";
 
 export class Character {
 	constructor() {
@@ -8,6 +9,8 @@ export class Character {
 		this.hitPoints = 5;
 		this.armor = 10;
 		this.attackForce = 1;
+		this.defense = new Defenses();
+		this.attacks = new Attack();
 	}
 
 	get alignment() {
@@ -22,39 +25,17 @@ export class Character {
 		}
 	}
 
-	attack = () => (this.attackForce = rollDice());
+	attack = () => {
+		this.attackForce = this.attacks.roll();
+		return this.attackForce;
+	};
 
-	defend(attack) {
-		let willBeDamaged = canDamage(this.armor, attack);
+	defend = attack => {
+		let willBeDamaged = this.attacks.canDamage(this.armor, attack);
 		if (willBeDamaged) {
-			this.takeDamage(attack);
+			this.hitPoints -= this.defense.calculateDamage(attack, this.armor);
 		}
-	}
-
-	takeDamage(attack) {
-		if (attack === DiceSides) {
-			return this.criticalHit();
-		}
-
-		if (this.armor <= attack) {
-			return this.normalDamage();
-		}
-	}
-
-	criticalHit() {
-		this.hitPoints -= 2 * NormalDamage;
-	}
-
-	normalDamage() {
-		this.hitPoints -= NormalDamage;
-	}
+	};
 
 	isDead = () => this.hitPoints <= 0;
 }
-
-export let canDamage = (armor, attackForce) => armor <= attackForce;
-
-let getRandomInt = (min, max) =>
-	Math.floor(Math.random() * (max - min + 1)) + min;
-
-let rollDice = () => getRandomInt(1, DiceSides);
