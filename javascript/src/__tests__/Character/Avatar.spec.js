@@ -5,7 +5,7 @@ describe("Character should", () => {
 	let character;
 
 	beforeEach(() => {
-		character = new Character();
+        character = new Character();
 	});
 
 	it("have a name", () => {
@@ -14,12 +14,12 @@ describe("Character should", () => {
 
 	it("have an alignment", () => {
 		character.should.have.property("alignment");
-		character.alignment.get().be.exactly("Good");
+        character.alignment.get().should.be.exactly("Good");
 	});
 
 	it("have 5 HP", () => {
 		character.should.have.property("hitPoints");
-		character.hitPoints.should.be.exactly(5);
+        character.hitPoints.should.be.exactly(5);
 	});
 
 	it("have 10 armor", () => {
