@@ -1,4 +1,4 @@
-import { DiceSides } from "./Constants";
+import { DiceSides } from "./Dice";
 
 export class Attack {
 	canDamage = (armor, attackForce) => armor <= attackForce;

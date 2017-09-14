@@ -1,4 +1,4 @@
-import { DiceSides } from "./Constants";
+import { DiceSides } from "./Dice";
 import * as Damage from "./Damage";
 
 export class Defenses {
