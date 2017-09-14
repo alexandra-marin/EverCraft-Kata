@@ -1,10 +1,10 @@
-import { DiceSides } from "./Dice";
+import { DiceSides } from './Dice';
 
 export class Attack {
-	canDamage = (armor, attackForce) => armor <= attackForce;
-    
+ canDamage = (armor, attackForce) => armor <= attackForce;
+
     roll = () => getRandomInt(1, DiceSides);
 }
 
 let getRandomInt = (min, max) =>
-	Math.floor(Math.random() * (max - min + 1)) + min;
+  Math.floor(Math.random() * (max - min + 1)) + min;

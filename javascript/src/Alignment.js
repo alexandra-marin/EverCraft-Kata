@@ -3,10 +3,10 @@ const Alignments = ["Good", "Bad", "Neutral"];
 const Alignment = () => {
 	let alignment = Alignments[0];
 
-	let get = () => alignment;
+	const get = () => alignment;
 
-	let set = (value) => {
-		var alignmentExists = Alignments.includes(value);
+	const set = value => {
+		const alignmentExists = Alignments.includes(value);
 
 		if (alignmentExists) {
 			alignment = value;
