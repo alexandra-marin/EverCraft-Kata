@@ -1,4 +1,4 @@
-import Attack from './Attack';
+import BattleBehavior from './BattleBehavior';
 import * as Alignment from './Alignment';
 import * as Abilities from './Abilities';
 
@@ -9,19 +9,19 @@ export default class Character {
         this.armor = 10;
         this.attackForce = 0;
         this.alignment = Alignment.default();
-        this.attacks = new Attack();
+        this.battleBehavior = new BattleBehavior();
         this.abilities = Abilities.default().get();
     }
 
  attack = () => {
-     this.attackForce = this.attacks.calculateAttack(this.abilities.Strength);
+     this.attackForce = this.battleBehavior.calculateAttack(this.abilities.Strength);
      return this.attackForce;
  };
 
  defend = (attack) => {
-     const willBeDamaged = this.attacks.canDamage(this.armor, attack);
+     const willBeDamaged = this.battleBehavior.canDamage(attack, this.armor);
      if (willBeDamaged) {
-         this.hitPoints -= this.attacks.calculateDamage(attack, this.armor);
+         this.hitPoints -= this.battleBehavior.calculateDamage(attack, this.armor);
      }
  };
 

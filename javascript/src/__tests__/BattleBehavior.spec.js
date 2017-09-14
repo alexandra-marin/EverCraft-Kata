@@ -1,11 +1,11 @@
 import { should } from 'should';
-import Attack from '../Attack';
+import BattleBehavior from '../BattleBehavior';
 
-describe('Attack should', () => {
+describe('Battle behavior should', () => {
     let attack;
 
     beforeEach(() => {
-        attack = new Attack();
+        attack = new BattleBehavior();
     });
 
     it('roll a dice 20-sided dice', () => {
@@ -19,8 +19,8 @@ describe('Attack should', () => {
         const enemyArmor = 10;
         const characterAttackForce = 15;
 
-        const willDamage = attack.canDamage(enemyArmor, characterAttackForce);
-
+        const willDamage = attack.canDamage(characterAttackForce, enemyArmor);
+        
         willDamage.should.be.true();
     });
 
@@ -28,7 +28,7 @@ describe('Attack should', () => {
         const enemyArmor = 15;
         const characterAttackForce = 15;
 
-        const willDamage = attack.canDamage(enemyArmor, characterAttackForce);
+        const willDamage = attack.canDamage(characterAttackForce, enemyArmor);
         willDamage.should.be.true();
     });
 
@@ -36,7 +36,7 @@ describe('Attack should', () => {
         const enemyArmor = 10;
         const characterAttackForce = 5;
 
-        const willDamage = attack.canDamage(enemyArmor, characterAttackForce);
+        const willDamage = attack.canDamage(characterAttackForce, enemyArmor);
         willDamage.should.be.false();
     });
 
