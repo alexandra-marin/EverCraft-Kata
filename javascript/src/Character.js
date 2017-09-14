@@ -3,7 +3,7 @@ import { Attack } from './Attack';
 import * as Alignment from './Alignment';
 import * as Abilities from './Abilities';
 
-export class Character {
+export default class Character {
     constructor() {
         this.name = 'Wizard';
         this.hitPoints = 5;

@@ -1,6 +1,6 @@
 import { DiceSides } from './Dice';
 
-export class Attack {
+export default class Attack {
  canDamage = (armor, attackForce) => armor <= attackForce;
 
  roll = () => getRandomInt(1, DiceSides);

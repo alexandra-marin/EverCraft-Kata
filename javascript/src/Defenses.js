@@ -1,7 +1,7 @@
 import { DiceSides } from './Dice';
 import * as Damage from './Damage';
 
-export class Defenses {
+export default class Defenses {
     calculateDamage(attack, defense) {
         if (attack === DiceSides) {
             return Damage.criticalHit;
