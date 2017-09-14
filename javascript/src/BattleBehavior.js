@@ -9,9 +9,12 @@ export default class BattleBehavior {
 
     canDamage = (attack, defense) => defense <= attack;
 
-    calculateDamage = (attack, defense) => {
+    calculateDamage = (attack, defense, strength) => {
         if (attack === DiceSides) {
-            return Damage.criticalHit;
+            var damage = Damage.criticalHitModifier * this.modifier.for(strength) + 
+                   Damage.criticalHitModifier * Damage.normalDamage;
+
+            return atLeastMinDamage(damage);       
         }
 
         if (defense <= attack) {
@@ -21,12 +24,15 @@ export default class BattleBehavior {
 
     calculateAttack = (strength) => {
         var attack = this.roll() + this.modifier.for(strength);
-
-        if(attack < 1) {
-            attack = Damage.minDamage
-        }
-        return attack;
+        return atLeastMinDamage(attack);
     };
+}
+
+let atLeastMinDamage = (number) => {
+    if(number < Damage.minDamage) {
+        number = Damage.minDamage
+    }
+    return number;
 }
 
 let getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;

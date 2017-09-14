@@ -61,9 +61,20 @@ describe('Battle behavior should', () => {
     it('return critical hit when enemy attack is 20', () => {
         const enemyAttackForce = 20;
         const characterArmor = 2;
+        const characterStrength = 10;
 
-        const damage = attack.calculateDamage(enemyAttackForce, characterArmor);
+        const damage = attack.calculateDamage(enemyAttackForce, characterArmor, characterStrength);
 
         damage.should.be.exactly(2);
+    });
+
+    it('return double damage + double modifier for critical hit', () => {
+        const enemyAttackForce = 20;
+        const characterArmor = 2;
+        const characterStrength = 1;
+
+        const damage = attack.calculateDamage(enemyAttackForce, characterArmor, characterStrength);
+
+        damage.should.be.exactly(1);
     });
 });

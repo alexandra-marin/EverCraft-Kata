@@ -38,6 +38,7 @@ describe('Character should', () => {
     it('take critical hit when attack is 20', () => {
         character.armor = 20;
         character.hitPoints = 5;
+        character.abilities.Strength = 10;
 
         character.defend(20);
 
