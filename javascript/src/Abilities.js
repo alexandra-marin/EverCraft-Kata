@@ -18,7 +18,7 @@ const Abilities = () => {
 
 	let get = () => abilities;
 	let getAllNames = () => Object.keys(abilities);
-	let getValueFor = (ability) => abilities.ability;
+	let getValueFor = (ability) => abilities[ability];
 
 	return {
 		get,

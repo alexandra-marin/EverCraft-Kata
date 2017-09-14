@@ -1,5 +1,6 @@
 import { should } from "should";
 import * as Abilities from "../Abilities";
+import Modifier from "../Modifier";
 
 describe("Abilities should", () => {
 	let abilities;
@@ -30,5 +31,12 @@ describe("Abilities should", () => {
 			Intelligence: 10,
 			Charisma: 10
 		});
+	});
+
+	it("be paired with a modifier", () => {
+        let score = abilities.getValueFor("Charisma")
+        let modifier = new Modifier();
+
+        modifier.for(score).should.be.exactly(0);
 	});
 });
