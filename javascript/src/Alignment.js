@@ -1,22 +1,22 @@
-const Alignments = ["Good", "Bad", "Neutral"];
+const Alignments = ['Good', 'Bad', 'Neutral'];
 
 const Alignment = () => {
-	let alignment = Alignments[0];
+    let alignment = Alignments[0];
 
-	const get = () => alignment;
+    const get = () => alignment;
 
-	const set = value => {
-		const alignmentExists = Alignments.includes(value);
+    const set = (value) => {
+        const alignmentExists = Alignments.includes(value);
 
-		if (alignmentExists) {
-			alignment = value;
-		}
-	};
+        if (alignmentExists) {
+            alignment = value;
+        }
+    };
 
-	return {
-		get,
-		set
-	};
+    return {
+        get,
+        set,
+    };
 };
 
 export default Alignment;

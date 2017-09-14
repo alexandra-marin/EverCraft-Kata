@@ -2,15 +2,15 @@ import { should } from 'should';
 import { Character } from '../../Character';
 
 describe('Character should', () => {
-  let character;
+    let character;
 
-  beforeEach(() => {
-    character = new Character();
-  });
+    beforeEach(() => {
+        character = new Character();
+    });
 
-  it('be able to attack', () => {
-    character.attack();
-    console.log(`Dice roll: ${character.attackForce}`);
-    character.attackForce.should.be.aboveOrEqual(1);
-  });
+    it('be able to attack', () => {
+        character.attack();
+        console.log(`Dice roll: ${character.attackForce}`);
+        character.attackForce.should.be.aboveOrEqual(1);
+    });
 });
