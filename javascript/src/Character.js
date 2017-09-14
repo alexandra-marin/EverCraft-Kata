@@ -16,7 +16,7 @@ export default class Character {
     }
 
  attack = () => {
-     this.attackForce = this.attacks.roll();
+     this.attackForce = this.attacks.calculateAttack(this.abilities.Strength);
      return this.attackForce;
  };
 
