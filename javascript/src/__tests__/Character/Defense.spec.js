@@ -35,7 +35,7 @@ describe("Character should", () => {
 		character.hitPoints.should.be.exactly(5);
 	});
 
-	it("take critical hit when  attack is 20", () => {
+	it("take critical hit when attack is 20", () => {
 		character.armor = 20;
 		character.hitPoints = 5;
         
@@ -46,8 +46,7 @@ describe("Character should", () => {
 
 	it("die if hit points is 0 or less", () => {
 		character.hitPoints = 0;
-		var isDead = character.isDead();
-
-		isDead.should.be.true();
+        
+        character.isDead().should.be.true();
 	});
 });

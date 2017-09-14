@@ -18,7 +18,7 @@ export class Character {
 		return this.attackForce;
 	};
 
-	defend = attack => {
+	defend = (attack) => {
 		let willBeDamaged = this.attacks.canDamage(this.armor, attack);
 		if (willBeDamaged) {
 			this.hitPoints -= this.defense.calculateDamage(attack, this.armor);
