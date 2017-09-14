@@ -1,19 +1,17 @@
 const Alignments = ["Good", "Bad", "Neutral"];
 
-var alignment = () => {
-	alignment = "Good";
+const Alignment = () => {
+	let alignment = Alignments[0];
 
-	function get() {
-		return alignment;
-	}
+	let get = () => alignment;
 
-	function set(value) {
+	let set = (value) => {
 		var alignmentExists = Alignments.includes(value);
 
 		if (alignmentExists) {
 			alignment = value;
 		}
-	}
+	};
 
 	return {
 		get,
@@ -21,4 +19,4 @@ var alignment = () => {
 	};
 };
 
-export default alignment;
+export default Alignment;
