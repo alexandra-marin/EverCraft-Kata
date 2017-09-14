@@ -1,5 +1,5 @@
-import { Defenses } from './Defenses';
-import { Attack } from './Attack';
+import Defenses from './Defenses';
+import Attack from './Attack';
 import * as Alignment from './Alignment';
 import * as Abilities from './Abilities';
 

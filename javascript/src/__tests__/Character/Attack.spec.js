@@ -1,5 +1,5 @@
 import { should } from 'should';
-import { Character } from '../../Character';
+import Character from '../../Character';
 
 describe('Character should', () => {
     let character;

@@ -1,5 +1,5 @@
 import { should } from 'should';
-import { Defenses } from '../Defenses';
+import Defenses from '../Defenses';
 
 describe('Defences should', () => {
     let defenses;

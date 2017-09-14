@@ -1,5 +1,5 @@
 import { should } from 'should';
-import { Attack } from '../Attack';
+import Attack from '../Attack';
 
 describe('Attack should', () => {
     let attack;
