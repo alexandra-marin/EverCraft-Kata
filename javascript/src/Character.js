@@ -1,4 +1,3 @@
-import Defenses from './Defenses';
 import Attack from './Attack';
 import * as Alignment from './Alignment';
 import * as Abilities from './Abilities';
@@ -10,7 +9,6 @@ export default class Character {
         this.armor = 10;
         this.attackForce = 0;
         this.alignment = Alignment.default();
-        this.defense = new Defenses();
         this.attacks = new Attack();
         this.abilities = Abilities.default().get();
     }
@@ -23,7 +21,7 @@ export default class Character {
  defend = (attack) => {
      const willBeDamaged = this.attacks.canDamage(this.armor, attack);
      if (willBeDamaged) {
-         this.hitPoints -= this.defense.calculateDamage(attack, this.armor);
+         this.hitPoints -= this.attacks.calculateDamage(attack, this.armor);
      }
  };
 

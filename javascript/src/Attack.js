@@ -4,10 +4,20 @@ import Modifier from './Modifier';
 
 export default class Attack {
     modifier = new Modifier();
+    
+    roll = () => getRandomInt(1, DiceSides);
 
     canDamage = (armor, attackForce) => armor <= attackForce;
 
-    roll = () => getRandomInt(1, DiceSides);
+    calculateDamage = (attack, defense) => {
+        if (attack === DiceSides) {
+            return Damage.criticalHit;
+        }
+
+        if (defense <= attack) {
+            return Damage.normalDamage;
+        }
+    }
 
     calculateAttack = (strength) => {
         var attack = this.roll() + this.modifier.for(strength);

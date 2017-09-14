@@ -23,6 +23,6 @@ describe('Character attack should', () => {
         character.attack();
         console.log(`Attack force: ${character.attackForce}`);
         
-        character.attackForce.should.be.exactly(1);
+        character.attackForce.should.be.aboveOrEqual(1);
     });
 });
