@@ -10,13 +10,13 @@ module.exports = function (config) {
       ],
     },
     files: [
-      'tests.webpack.js',
+      'tools/tests.webpack.js',
     ],
     frameworks: [
       'jasmine',
     ],
     preprocessors: {
-      'tests.webpack.js': ['webpack'],
+      'tools/tests.webpack.js': ['webpack'],
     },
     reporters: ['progress', 'coverage'],
     webpack: {
