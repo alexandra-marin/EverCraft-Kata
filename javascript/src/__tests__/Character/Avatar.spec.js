@@ -25,5 +25,9 @@ describe("Character should", () => {
 	it("have 10 armor", () => {
 		character.should.have.property("armor");
 		character.armor.should.be.exactly(10);
+    });
+    
+    it("have abilities", () => {
+        character.should.have.property("abilities").which.is.a.Object();
 	});
 });
