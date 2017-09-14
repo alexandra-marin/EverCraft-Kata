@@ -19,7 +19,7 @@ export default class Character {
  };
 
  defend = (attack) => {
-     const willBeDamaged = this.battleBehavior.canDamage(attack, this.armor);
+     const willBeDamaged = this.battleBehavior.canDamage(attack, this.armor, this.abilities.Dexterity);
      if (willBeDamaged) {
          this.hitPoints -= this.battleBehavior.calculateDamage(attack, this.armor, this.abilities.Strength);
      }

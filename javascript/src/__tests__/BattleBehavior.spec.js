@@ -15,28 +15,40 @@ describe('Battle behavior should', () => {
         roll.should.be.aboveOrEqual(1).and.belowOrEqual(20);
     });
 
-    it('inflict damage if roll is greater than enemy armor', () => {
+    it('inflict damage if attack is greater than enemy defense', () => {
         const enemyArmor = 10;
         const characterAttackForce = 15;
+        const characterDexterity = 1;
 
-        const willDamage = attack.canDamage(characterAttackForce, enemyArmor);
+        const willDamage = attack.canDamage(characterAttackForce, enemyArmor, characterDexterity);
         
         willDamage.should.be.true();
     });
 
-    it('inflict damage if roll is equal to enemy armor', () => {
+    it('inflict damage if attack is equal to enemy defense', () => {
         const enemyArmor = 15;
         const characterAttackForce = 15;
-
-        const willDamage = attack.canDamage(characterAttackForce, enemyArmor);
+        const enemyDexterity = 10;
+        
+        const willDamage = attack.canDamage(characterAttackForce, enemyArmor, enemyDexterity);
         willDamage.should.be.true();
     });
 
-    it('not inflict damage if roll is less than enemy armor', () => {
+    it('not inflict damage if attack is less than enemy defense', () => {
         const enemyArmor = 10;
         const characterAttackForce = 5;
+        const enemyDexterity = 10;
+        
+        const willDamage = attack.canDamage(characterAttackForce, enemyArmor, enemyDexterity);
+        willDamage.should.be.false();
+    });
 
-        const willDamage = attack.canDamage(characterAttackForce, enemyArmor);
+    it('not inflict damage if enemy has high dexterity', () => {
+        const enemyArmor = 10;
+        const characterAttackForce = 5;
+        const enemyDexterity = 20;
+        
+        const willDamage = attack.canDamage(characterAttackForce, enemyArmor, enemyDexterity);
         willDamage.should.be.false();
     });
 

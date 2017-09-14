@@ -7,7 +7,10 @@ export default class BattleBehavior {
     
     roll = () => getRandomInt(1, DiceSides);
 
-    canDamage = (attack, defense) => defense <= attack;
+    canDamage = (attack, defense, dexterity) => 
+    {
+        return defense + this.modifier.for(dexterity) <= attack;
+    }
 
     calculateDamage = (attack, defense, strength) => {
         if (attack === DiceSides) {
